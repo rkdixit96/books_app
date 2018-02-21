@@ -6,23 +6,28 @@ export default class BookCard extends React.Component {
   constructor(props) {
     super(props);
     BookCard.propTypes = {
-      title: PropTypes.string,
+      name: PropTypes.string,
+      rating: PropTypes.string,
+      author: PropTypes.string,
+      id: PropTypes.string,
     };
     BookCard.defaultProps = {
-      title: 'default',
+      name: 'default',
       rating: 'default',
       author: 'default',
+      id: 'default',
     };
     this.state = {
-      title: props.title,
+      name: props.name,
       rating: props.rating,
       author: props.author,
+      id: props.id,
     };
   }
   render() {
     return (
       <div>
-        <p>{this.state.title}</p>
+        <p>{this.state.name}</p>
       </div>
     );
   }

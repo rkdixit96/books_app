@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SyncButton from '../SyncButton/SyncButton';
+import AuthorContaniner from '../AuthorContainer/AuthorContainer';
 
 
 export default class App extends React.Component {
@@ -14,7 +15,9 @@ export default class App extends React.Component {
     };
     this.state = {
       isDbEmpty: null,
-      textValue: props.textValue,
+      groupedBooks: null,
+      loaded: false,
+    
     };
   }
 
@@ -26,10 +29,37 @@ export default class App extends React.Component {
             this.setState({
               isDbEmpty: true,
             });
+          } else {
+            const books = [];
+            data.result.forEach((element) => {
+              books.push(element);
+            }, this);
+            console.log(books);
+            const res = this.groupDataBasedOnKey(books,'author')
+            console.log(res)
+            this.setState({
+              isDbEmpty: false,
+              groupedBooks: res,
+              loaded: true,
+            });
           }
         });
       });
   }
+
+  groupDataBasedOnKey = (data, key) => {
+    const groupedData = {};
+    data.forEach((element) => {
+        if (groupedData[element[key]] === undefined) {
+        groupedData[element[key]] = [];
+        }
+        groupedData[element[key]].push(element);
+    }, this);
+    return groupedData;
+};
+
+
+
   render() {
     if (this.state.isDbEmpty) {
       return (
@@ -37,11 +67,21 @@ export default class App extends React.Component {
           <SyncButton />
         </div>
       );
+    } 
+    if(this.state.loaded){
+        return (
+            <div>
+              <AuthorContaniner author = "J K Rowling" books = {this.state.groupedBooks["J K Rowling"]} />
+              <AuthorContaniner author = "Sidney Sheldon" books = {this.state.groupedBooks["Sidney Sheldon"]} />
+            </div>
+          );
     }
-    return (
-      <div>
-        <p>DB has values</p>
-      </div>
-    );
+    else{
+        return (
+            <div>
+              Loading
+            </div>
+          );
+    }
   }
 }
