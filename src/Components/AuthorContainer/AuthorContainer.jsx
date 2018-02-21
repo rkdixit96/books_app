@@ -17,6 +17,11 @@ export default class AuthorContainer extends React.Component {
       books: props.books,
     };
   }
+
+  
+
+
+
   populateBooks = books => books.map(value => <BookCard name={value.name} rating={value.rating} id={value.id}  />);
   
   render() {
