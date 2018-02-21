@@ -11,10 +11,12 @@ import initStore from './redux/store';
 
 ReactDOM.render(
   (
-    <div>
+    <div className="container">
       <SideBar test="BS" />
-      <Header text="The Book Shelf" />
-      <App textValue="Hi" />
+      <div>
+        <Header text="The Book Shelf" />
+        <App textValue="Hi" />
+      </div>
     </div>
   ),
   document.getElementById('root'),
