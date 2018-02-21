@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Header.css';
+import './SideBar.css';
 
 
-export default class Header extends React.Component {
+export default class SideBar extends React.Component {
   constructor(props) {
     super(props);
-    Header.propTypes = {
+    SideBar.propTypes = {
       text: PropTypes.string,
     };
-    Header.defaultProps = {
+    SideBar.defaultProps = {
       text: 'default',
     };
     this.state = {
@@ -18,13 +18,14 @@ export default class Header extends React.Component {
   }
 
   style = {
-    'background-color' : '#9f4141',
+    'background-color' : '#f77d3e',
   }
 
   render() {
     return (
-      <div className="header">
-        <p >{this.state.text}</p>
+      <div className="sideBar">
+          {this.state.text}
+        
       </div>
     );
   }

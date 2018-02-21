@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import './Header.css';
 
 
-export default class Header extends React.Component {
+export default class Button extends React.Component {
   constructor(props) {
     super(props);
-    Header.propTypes = {
+    Button.propTypes = {
       text: PropTypes.string,
+      
     };
-    Header.defaultProps = {
+    Button.defaultProps = {
       text: 'default',
     };
     this.state = {
@@ -18,13 +19,13 @@ export default class Header extends React.Component {
   }
 
   style = {
-    'background-color' : '#9f4141',
+    'background-color' : '#f77d3e',
   }
 
   render() {
     return (
-      <div className="header">
-        <p >{this.state.text}</p>
+      <div style={this.style}>
+        <input type="button" />
       </div>
     );
   }

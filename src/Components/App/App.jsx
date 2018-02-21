@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SyncButton from '../SyncButton/SyncButton';
 import AuthorContaniner from '../AuthorContainer/AuthorContainer';
-import Header from '../Header/Header'
+
 
 
 export default class App extends React.Component {
@@ -65,7 +65,6 @@ export default class App extends React.Component {
     if (this.state.isDbEmpty) {
       return (
         <div>
-          <Header text="The Book Shelf"/>
           <SyncButton />
         </div>
       );
@@ -73,7 +72,6 @@ export default class App extends React.Component {
     if(this.state.loaded){
         return (
             <div>
-              <Header text="The Book Shelf"/>
               <AuthorContaniner author = "J K Rowling" books = {this.state.groupedBooks["J K Rowling"]} />
               <AuthorContaniner author = "Sidney Sheldon" books = {this.state.groupedBooks["Sidney Sheldon"]} />
             </div>
@@ -82,7 +80,6 @@ export default class App extends React.Component {
     else{
         return (
             <div>
-            <Header text="The Book Shelf"/>
               Loading
             </div>
           );
