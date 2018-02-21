@@ -17,14 +17,14 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-fetch('/books')
-  .then((response) => {
-    response.json().then((data) => {
-      console.log(data);
-    });
-  });
+// fetch('/books/likes')
+//   .then((response) => {
+//     response.json().then((data) => {
+//       console.log(data);
+//     });
+//   });
 
-fetch('/books/2/like', {
-  method: 'PUT',
-});
+// fetch('/books/2/like', {
+//   method: 'PUT',
+// });
 
